@@ -5,25 +5,25 @@ package com.zxw.algorithm.merge.util;
  */
 public class InverseNumberUtil {
 
-    private int inverseNumber=0;
+    private long inverseNumber=0;
 
-    public int getInverseNumber() {
+    public long getInverseNumber() {
         return inverseNumber;
     }
 
     private void mergeArray(int arr[] , int start, int middle, int end ){
-        //分别对应前一半和后一半数组的开始索引
+        //i is index of lelf array and j is index of right array
         int i=start, j=middle+1;
-        //分别对应前一半和后一半数组的结束位置
+        //m is end of left array and n is end of right arrsy
         int m=middle, n=end;
 
         int [] temp=new int[end-start+1];
 
-        //为temp数组的索引
+        // k is index of temp array
         int k=0;
 
 
-        //比较前后两半数组的大小
+        //merge the left array and right array
         while (i<=m && j<=n){
             if (arr[i]<arr[j]){
                 temp[k++]=arr[i++];
@@ -32,22 +32,22 @@ public class InverseNumberUtil {
                 inverseNumber+=(m-i+1);
             }
         }
-        //剩余的前半数组
+        //add the remain staff of left array to temp array
         while (i<=m){
             temp[k++]=arr[i++];
         }
-        //剩余的后半数组
+        //add the remain staff of right array to temp array
         while (j<=n){
             temp[k++]=arr[j++];
         }
-        //将temp数组中的内容复制到arr数组中
+        //copy temp array to source array
         for (int index=0;index<k;index++){
             arr[start+index]=temp[index];
         }
 
     }
 
-    //递归归并排序
+    //recursive call the merge sort
     private void mergeSort(int arr[],int start,int end){
 
         if (start<end){
@@ -61,6 +61,7 @@ public class InverseNumberUtil {
         }
     }
 
+    //call method
     public void sort(int arr[]){
 
         if (arr!=null&&arr.length>0){
