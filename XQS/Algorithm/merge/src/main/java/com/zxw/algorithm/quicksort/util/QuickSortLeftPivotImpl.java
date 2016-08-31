@@ -21,7 +21,7 @@ public class QuickSortLeftPivotImpl implements QuickSort{
      * @return index of pivot
      */
     private int divide(int arr[] , int start, int end){
-        if (start<end){
+
             //define pivot
             int x=arr[start];
             int i=start+1;
@@ -31,7 +31,7 @@ public class QuickSortLeftPivotImpl implements QuickSort{
                     //swap a[i]  and a[j]
                     int temp=arr[i];
                     arr[i]=arr[j];
-                    arr[j]=arr[i];
+                    arr[j]=temp;
                     i++;
                 }
                 j++;
@@ -45,9 +45,6 @@ public class QuickSortLeftPivotImpl implements QuickSort{
             compareCount= compareCount+ (end-start);
 
             return i-1;
-        }
-
-        return -1;
     }
 
     private void quickSort(int arr[] , int start, int end){
